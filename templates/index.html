@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personality Chatbot</title>
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fff7ae, #ffe29f);
+        }
+
+        .container {
+            margin-top: 80px;
+            background: #fffdf5;
+            padding: 40px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(255, 200, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            color: #ffb703;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #ffd166;
+            width: 260px;
+            margin: 10px;
+        }
+
+        select {
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #ffb703;
+            margin: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border-radius: 20px;
+            border: none;
+            background: linear-gradient(to right, #ffb703, #ffd166);
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ffd166;
+        }
+
+        .response {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #5a4a00;
+            background: #fff3b0;
+            padding: 15px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 70%;
+            position: relative;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .response::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #fff3b0 transparent transparent transparent;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        p {
+            color: #a98400;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔊 Sound -->
+    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
+    <p>☀️ Spreading good vibes only ☀️</p>
+
+    <div class="container">
+        <h1>🧠 Personality Chatbot 😎✨</h1>
+
+        <form method="POST">
+            <input type="text" name="user_input" placeholder="Tell me your problem 😏" required>
+            <br>
+
+            <select name="personality">
+                <option value="savage">😈 Savage</option>
+                <option value="sweet">🥺 Sweet</option>
+                <option value="sarcastic">🙄 Sarcastic</option>
+                <option value="motivational">🚀 Motivational</option>
+            </select>
+            <br>
+
+            <button type="submit" onclick="playSound()">✨ Roast / Respond ✨</button>
+        </form>
+
+        {% if response %}
+        <div class="response">
+            {{ emoji }} {{ response }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- 🎵 Script -->
+    <script>
+        function playSound() {
+            document.getElementById("clickSound").play();
+        }
+    </script>
+
+</body>
+</html>
